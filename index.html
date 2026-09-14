@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="EndlessTyper is an accuracy-first typing trainer with unlimited practice, live WPM, levels, and adaptive coaching." />
+    <meta name="theme-color" content="#11110f" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311110f'/%3E%3Cpath d='M14 20h36M22 20v24m20-24v24M16 44h32' stroke='%23e7b74b' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <title>EndlessTyper — unlimited typing practice</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="EndlessTyper home">
+        <span class="brand-mark" aria-hidden="true">E</span>
+        <span>endless<span>typer</span></span>
+      </a>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeButton" aria-label="Toggle light theme" title="Toggle theme">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42M7.06 16.94l-1.42 1.42"/><circle cx="12" cy="12" r="4"/></svg>
+        </button>
+        <button class="icon-btn" id="soundButton" aria-label="Toggle key sounds" title="Key sounds">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4.5 4.5a4 4 0 0 1 0 5m2.5-7.5a7 7 0 0 1 0 10"/></svg>
+        </button>
+        <button class="icon-btn" id="helpButton" aria-label="Show keyboard shortcuts" title="Shortcuts">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.5 2c-.9.6-1.3 1.1-1.3 2m0 3h.01"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="workspace" aria-label="Typing practice">
+        <div class="mode-bar" role="group" aria-label="Practice options">
+          <label class="switch-label"><input id="punctuationToggle" type="checkbox" /><span></span> punctuation</label>
+          <label class="switch-label"><input id="numbersToggle" type="checkbox" /><span></span> numbers</label>
+        </div>
+
+        <div class="level-strip" aria-label="Typing level progress">
+          <div class="rank-medal"><span id="levelNumber">1</span></div>
+          <div class="rank-copy"><small id="rankTitle">newcomer</small><strong>level <span id="currentLevel">1</span></strong></div>
+          <div class="xp-wrap"><div class="xp-track"><span id="xpBar"></span></div><small id="xpText">0 / 100 xp</small></div>
+          <div class="session-xp"><span id="sessionXp">+0</span><small>this run</small></div>
+        </div>
+
+        <div class="status-row">
+          <div class="metric primary"><span id="wpm">0</span><small>wpm</small></div>
+          <div class="metric"><span id="accuracy">100</span><small>accuracy</small></div>
+          <div class="metric"><span id="streak">0</span><small>streak</small></div>
+          <div class="session-state"><span class="pulse"></span><span id="sessionLabel">ready · no time limit</span></div>
+        </div>
+
+        <div class="typing-shell" id="typingShell">
+          <div class="line-marker" aria-hidden="true"></div>
+          <span class="typing-caret" id="typingCaret" aria-hidden="true"></span>
+          <div class="words" id="words" aria-live="off"></div>
+          <textarea id="typingInput" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Typing input"></textarea>
+          <button class="focus-overlay" id="focusOverlay">click here or press any key to focus</button>
+        </div>
+
+        <div class="controls">
+          <button class="restart" id="restartButton" aria-label="Restart from level 1" title="Restart from level 1">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v6h6M20 20v-6h-6M5.5 15a7 7 0 0 0 11.9 2M18.5 9A7 7 0 0 0 6.6 7"/></svg>
+            restart
+          </button>
+          <span><kbd>tab</kbd> + <kbd>enter</kbd> clean restart</span>
+          <span><kbd>esc</kbd> pause</span>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <span>EndlessTyper progress stays on this device.</span>
+      <span class="footer-motto">Accuracy first. Speed follows.</span>
+    </footer>
+
+    <div class="level-up" id="levelUpToast" hidden role="status" aria-live="polite">
+      <div class="level-up-medal"><span id="levelUpNumber">2</span></div>
+      <div><small>level up</small><strong id="levelUpTitle">Level 2 unlocked</strong></div>
+    </div>
+
+    <dialog id="helpDialog">
+      <form method="dialog">
+        <div class="dialog-head"><div><span>keyboard first</span><h2>Shortcuts</h2></div><button value="cancel" aria-label="Close">×</button></div>
+        <dl class="shortcut-list">
+          <div><dt><kbd>tab</kbd> + <kbd>enter</kbd></dt><dd>restart the current session</dd></div>
+          <div><dt><kbd>esc</kbd></dt><dd>pause or resume typing</dd></div>
+          <div><dt><kbd>ctrl</kbd> + <kbd>backspace</kbd></dt><dd>remove the previous word</dd></div>
+        </dl>
+      </form>
+    </dialog>
+    <script src="./app.js"></script>
+  </body>
+</html>
