@@ -1,0 +1,44 @@
+<svg width="1200" height="260" viewBox="0 0 1200 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">EndlessTyper</title>
+  <desc id="description">An animated EndlessTyper banner with a blinking typing cursor.</desc>
+  <defs>
+    <linearGradient id="background" x1="30" y1="20" x2="1170" y2="240" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#181813"/>
+      <stop offset="1" stop-color="#0D0D0B"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="356" y1="0" x2="817" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7B74B"/>
+      <stop offset="1" stop-color="#FFD978"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="typingClip">
+      <rect x="350" y="70" width="0" height="74">
+        <animate attributeName="width" values="0;500;500;0;0" keyTimes="0;0.48;0.72;0.9;1" dur="6s" repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+  </defs>
+  <rect x="1" y="1" width="1198" height="258" rx="24" fill="url(#background)" stroke="#302F28" stroke-width="2"/>
+  <circle cx="73" cy="55" r="4" fill="#E7B74B" opacity=".85"/>
+  <circle cx="91" cy="55" r="4" fill="#615F56"/>
+  <circle cx="109" cy="55" r="4" fill="#37362F"/>
+  <g transform="translate(248 68)">
+    <rect width="76" height="76" rx="18" fill="#191915" stroke="#E7B74B" stroke-width="2"/>
+    <rect x="7" y="7" width="62" height="62" rx="13" stroke="#E7B74B" stroke-opacity=".22" stroke-width="4"/>
+    <text x="38" y="51" fill="#E7B74B" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="36" text-anchor="middle">E</text>
+  </g>
+  <g clip-path="url(#typingClip)">
+    <text x="350" y="126" fill="#F1EEE3" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="58" letter-spacing="-2">endless<tspan fill="url(#accent)">typer</tspan></text>
+  </g>
+  <rect x="350" y="75" width="4" height="61" rx="2" fill="#E7B74B" filter="url(#glow)">
+    <animate attributeName="x" values="350;816;816;350;350" keyTimes="0;0.48;0.72;0.9;1" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;.25;1;.25;1" dur=".8s" repeatCount="indefinite"/>
+  </rect>
+  <text x="600" y="186" fill="#929188" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" text-anchor="middle" letter-spacing="3">ACCURACY FIRST · SPEED FOLLOWS</text>
+  <path d="M465 215H735" stroke="#2B2B25" stroke-width="3" stroke-linecap="round"/>
+  <path d="M465 215H608" stroke="#E7B74B" stroke-width="3" stroke-linecap="round">
+    <animate attributeName="d" values="M465 215H465;M465 215H735;M465 215H735;M465 215H465" keyTimes="0;.48;.75;1" dur="6s" repeatCount="indefinite"/>
+  </path>
+</svg>
